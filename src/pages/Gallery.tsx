@@ -29,7 +29,7 @@ const Gallery = () => {
       description: 'A variety of breads to choose from'
     },
     {
-      url: 'https://images.unsplash.com/photo-1591688515527-f7b20bd9d6b9?auto=format&fit=crop&w=600&q=80',
+      url: 'https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=1200&q=80',
       title: 'Our Bakery',
       description: 'The place where all the magic happens'
     }

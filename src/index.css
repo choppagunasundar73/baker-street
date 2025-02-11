@@ -1,0 +1,426 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base responsive styles */
+:root {
+  --container-padding: 2rem;
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Roboto', sans-serif;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --container-padding: 1rem;
+  }
+}
+
+/* Common container styles */
+.container {
+  @apply px-4 sm:px-6 lg:px-8 mx-auto;
+  max-width: 1200px;
+  width: 100%;
+}
+
+/* Responsive grid layouts */
+.grid {
+  display: grid;
+  gap: 1rem;
+  padding: 0;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+}
+
+@media (min-width: 640px) {
+  .grid {
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .grid {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+  }
+  
+  .card {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Animation classes */
+.fade-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Mobile navigation styles */
+.mobile-menu {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu {
+    display: block;
+  }
+  
+  .desktop-menu {
+    display: none;
+  }
+  
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 70%;
+    height: 100vh;
+    background: white;
+    padding: 2rem;
+    transition: left 0.3s ease-in-out;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .nav-links.active {
+    left: 0;
+  }
+}
+
+/* Hover effects */
+.card {
+  background-color: white;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.card img {
+  width: 100%;
+  height: 12rem;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+@media (min-width: 768px) {
+  .card img {
+    height: 16rem;
+  }
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+
+.card-content {
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .card-content {
+    padding: 1.5rem;
+  }
+}
+
+/* Mobile menu button styles */
+.hamburger {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #8B4513;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Smooth height transition for mobile menu */
+.mobile-menu-container {
+  transition: max-height 0.3s ease-in-out;
+}
+
+/* Add smooth transitions for all interactive elements */
+a, button {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Improve touch targets on mobile */
+@media (max-width: 768px) {
+  a, button {
+    min-height: 44px;
+    padding: 0.75rem 1rem;
+  }
+  
+  .nav-link {
+    display: block;
+    width: 100%;
+  }
+}
+
+/* Prevent scrolling when mobile menu is open */
+.menu-open {
+  overflow: hidden;
+}
+
+/* Modern typography */
+body {
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  line-height: 1.2;
+}
+
+h1 {
+  @apply text-3xl md:text-5xl font-bold tracking-tight;
+  background: linear-gradient(45deg, #8B4513, #A0522D);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h2 {
+  @apply text-2xl md:text-3xl font-semibold tracking-tight text-[#8B4513];
+}
+
+h3 {
+  @apply text-xl md:text-2xl font-medium tracking-tight text-[#8B4513];
+}
+
+/* Brand text */
+.brand-text {
+  font-family: var(--font-heading);
+  @apply text-2xl md:text-3xl;
+}
+
+/* Card content typography */
+.card-content h3 {
+  font-family: var(--font-heading);
+  @apply text-xl font-semibold mb-2;
+}
+
+.card-content p {
+  font-family: var(--font-body);
+  @apply text-sm md:text-base text-gray-600;
+}
+
+/* Footer styles */
+.footer {
+  @apply bg-[#8B4513] text-white py-8;
+  font-family: var(--font-body);
+}
+
+.footer-brand {
+  font-family: var(--font-heading);
+  @apply text-2xl font-semibold mb-2;
+  background: linear-gradient(45deg, #FFF8E7, #FFFFFF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.footer-tagline {
+  font-family: var(--font-body);
+  @apply text-sm text-gray-200 italic;
+}
+
+.footer-heading {
+  font-family: var(--font-heading);
+  @apply text-lg font-medium mb-4 text-white tracking-wide;
+  letter-spacing: 0.05em;
+}
+
+.footer-link {
+  @apply text-gray-200 hover:text-white transition-colors duration-200;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+.footer-contact {
+  font-family: var(--font-body);
+  @apply text-sm leading-relaxed;
+  letter-spacing: 0.02em;
+}
+
+.footer-social {
+  @apply hover:text-white transition-transform duration-200 hover:scale-110;
+}
+
+.footer-bottom {
+  @apply mt-8 pt-6 border-t border-[#A0522D] text-center;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+}
+
+.footer-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer h3 {
+  font-family: var(--font-heading);
+  @apply text-base md:text-lg font-semibold mb-3;
+}
+
+.footer p, 
+.footer address,
+.footer-links a {
+  font-family: var(--font-body);
+  @apply text-sm text-gray-200;
+}
+
+.footer-links {
+  @apply space-y-1.5;
+}
+
+/* Compact mobile footer */
+@media (max-width: 768px) {
+  .footer {
+    @apply py-6;
+  }
+  
+  .footer-grid {
+    @apply gap-4 px-4;
+  }
+  
+  .footer h3 {
+    @apply mb-2;
+  }
+}
+
+/* Update navigation styles */
+.nav-item {
+  font-family: var(--font-body);
+  @apply relative px-3 py-2 text-sm font-medium transition-colors;
+}
+
+.nav-item::after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-[#8B4513] transition-all duration-300;
+}
+
+.nav-item:hover::after,
+.nav-item.active::after {
+  @apply w-full;
+}
+
+.nav-item.active {
+  @apply text-[#8B4513] font-semibold;
+}
+
+/* Button typography */
+.btn {
+  font-family: var(--font-body);
+  @apply text-sm md:text-base font-medium;
+}
+
+/* Price typography */
+.price {
+  font-family: var(--font-heading);
+  @apply text-lg md:text-xl font-semibold;
+}
+
+/* Loading animation styles */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.loading-icon {
+  animation: float 2s ease-in-out infinite;
+}
+
+/* Add a nice transition when loading screen disappears */
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 300ms ease-in;
+}
+
+/* Carousel styles */
+.carousel-container {
+  @apply relative w-full max-w-5xl mx-auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .carousel-container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .carousel-container {
+    padding: 0 2rem;
+  }
+}
+
+/* Ensure consistent spacing in mobile */
+@media (max-width: 640px) {
+  .container,
+  .carousel-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  section {
+    margin-left: -1rem;
+    margin-right: -1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Tagline text styling */
+.tagline {
+  font-family: var(--font-heading);
+  @apply text-lg md:text-xl lg:text-2xl text-[#A0522D] italic;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(45deg, #8B4513, #A0522D);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
